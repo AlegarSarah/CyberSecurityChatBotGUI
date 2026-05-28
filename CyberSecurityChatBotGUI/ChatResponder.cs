@@ -124,7 +124,13 @@ namespace CyberSecurityChatBotGUI
                                           "Always look for HTTPS before entering info!" }},
         };
 
-        public string GetTopicList()
+                  // Exit keywords
+            { "bye",              "EXIT" },
+            { "exit",             "EXIT" },
+            { "quit",             "EXIT" },
+            { "goodbye",          "EXIT" }
+
+public string GetTopicList()
         {
             return "Topics I can help with:\n" +
                    "• passwords, phishing, malware\n" +
