@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CyberSecurityChatBotGUI
+namespace CybersecurityChatbotGUI
 {
     class ChatbotResponder
     {
+        // Random responses for varied interaction
         private static readonly Random random = new Random();
 
+        // Added 50 keywords responses with random selection
         private static readonly Dictionary<string, string[]> Responses =
             new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
         {
@@ -20,7 +22,7 @@ namespace CyberSecurityChatBotGUI
             { "how are you",      new[] { "I am running securely and ready to help!",
                                           "All systems secure! How can I help you?" }},
 
-            { "help",             new[] { "Type 'list' to see all available topics!",
+            { "help",             new[] { "I can help with cybersecurity topics! Type 'list' to see all topics.",
                                           "Ask me about passwords, phishing, malware and more!" }},
 
             { "thank you",        new[] { "You are welcome! Stay safe online!",
@@ -33,6 +35,15 @@ namespace CyberSecurityChatBotGUI
                                           "Never reuse passwords across different sites!",
                                           "Use a password manager like LastPass or Bitwarden!" }},
 
+            { "weak password",    new[] { "Weak passwords are easy to crack! Use at least 12 characters!",
+                                          "Avoid using names or birthdays as passwords!" }},
+
+            { "strong password",  new[] { "A strong password has 12+ characters with mixed letters and symbols!",
+                                          "Use a passphrase like: Coffee!Monkey$Tree2026" }},
+
+            { "password manager", new[] { "Use LastPass or Bitwarden to store strong unique passwords!",
+                                          "Password managers generate and store secure passwords for you!" }},
+
             { "phishing",         new[] { "Phishing emails mimic trusted sources. Always verify the sender!",
                                           "Never click suspicious links in emails!",
                                           "Check the email address carefully before clicking any links!" }},
@@ -40,6 +51,27 @@ namespace CyberSecurityChatBotGUI
             { "scam",             new[] { "Legitimate companies never ask for passwords via email!",
                                           "Be cautious of unsolicited calls asking for personal info!",
                                           "If it sounds too good to be true it probably is a scam!" }},
+
+            { "fraud",            new[] { "Never share personal info with unverified sources!",
+                                          "Report fraud to the South African Police Service immediately!" }},
+
+            { "spam",             new[] { "Never click links inside spam emails!",
+                                          "Mark spam emails and report them to your email provider!" }},
+
+            { "fake website",     new[] { "Check the URL carefully for slight misspellings!",
+                                          "Always look for HTTPS before entering personal information!" }},
+
+            { "identity theft",   new[] { "Monitor your accounts regularly for suspicious activity!",
+                                          "Enable 2FA on all accounts to prevent identity theft!" }},
+
+            { "social engineering", new[] { "Always verify who you are speaking to before sharing info!",
+                                            "Social engineers create urgency to trick you. Stay calm!" }},
+
+            { "email",            new[] { "Always verify the sender before clicking email links!",
+                                          "Never open attachments from unknown senders!" }},
+
+            { "suspicious link",  new[] { "Hover over links first to see where they lead!",
+                                          "When in doubt do not click suspicious links!" }},
 
             { "malware",          new[] { "Install reputable antivirus and keep it updated!",
                                           "Avoid downloading software from unknown sources!",
@@ -60,34 +92,43 @@ namespace CyberSecurityChatBotGUI
             { "antivirus",        new[] { "Install reputable antivirus and keep it updated!",
                                           "Run regular scans to protect your device!" }},
 
-            { "vpn",              new[] { "A VPN encrypts your internet connection!",
-                                          "Use a VPN especially on public WiFi networks!" }},
+            { "vpn",              new[] { "A VPN encrypts your internet connection. Use one on public WiFi!",
+                                          "VPNs protect your privacy and hide your IP address!" }},
 
-            { "firewall",         new[] { "Always keep your firewall enabled!",
+            { "firewall",         new[] { "Always keep your firewall enabled to block unauthorized access!",
                                           "A firewall monitors and controls network traffic!" }},
 
             { "wifi",             new[] { "Avoid using public WiFi for sensitive tasks!",
                                           "Always use a VPN on public WiFi networks!" }},
 
-            { "encryption",       new[] { "Encryption converts data into unreadable code!",
-                                          "Use encrypted apps for sensitive communication!" }},
+            { "public wifi",      new[] { "Public WiFi is dangerous! Use a VPN to stay protected!",
+                                          "Never do online banking on public WiFi!" }},
 
-            { "backup",           new[] { "Use the 3-2-1 rule: 3 copies, 2 media, 1 offsite!",
+            { "router",           new[] { "Change your router default password immediately!",
+                                          "Keep your router firmware updated for security!" }},
+
+            { "encryption",       new[] { "Encryption converts data into unreadable code to protect it!",
+                                          "Use encrypted apps like Signal for sensitive communication!" }},
+
+            { "backup",           new[] { "Use the 3-2-1 rule: 3 copies, 2 different media, 1 offsite!",
                                           "Back up your data regularly to prevent data loss!" }},
 
-            { "data breach",      new[] { "Change your passwords immediately after a breach!",
+            { "data breach",      new[] { "Change your passwords immediately after a data breach!",
                                           "Enable 2FA on all accounts after a breach!" }},
 
-            { "privacy",          new[] { "Review your app permissions regularly!",
+            { "privacy",          new[] { "Review your app permissions regularly to protect privacy!",
                                           "Limit what personal information you share online!" }},
 
-            { "two factor",       new[] { "Always enable 2FA for extra security!",
-                                          "2FA makes it much harder for hackers to access accounts!" }},
+            { "two factor",       new[] { "Always enable 2FA for an extra layer of security!",
+                                          "2FA makes it much harder for hackers to access your accounts!" }},
 
-            { "2fa",              new[] { "Enable Two-Factor Authentication on all accounts!",
-                                          "Use Google Authenticator for 2FA!" }},
+            { "2fa",              new[] { "Enable Two-Factor Authentication on all your accounts!",
+                                          "Use an authenticator app like Google Authenticator for 2FA!" }},
 
-            { "update",           new[] { "Always keep software updated to patch vulnerabilities!",
+            { "biometrics",       new[] { "Fingerprint and face ID add extra security to your devices!",
+                                          "Biometric authentication is harder to fake than passwords!" }},
+
+            { "update",           new[] { "Always keep software updated to patch security vulnerabilities!",
                                           "Enable automatic updates to stay protected!" }},
 
             { "hacker",           new[] { "Hackers exploit weak passwords and outdated software!",
@@ -102,48 +143,44 @@ namespace CyberSecurityChatBotGUI
             { "online banking",   new[] { "Always use 2FA for online banking!",
                                           "Never do online banking on public WiFi!" }},
 
-            { "cybersecurity",    new[] { "Cybersecurity protects systems from digital attacks!",
+            { "digital footprint",new[] { "Be mindful of what you post and share online!",
+                                          "Your digital footprint can be used against you!" }},
+
+            { "cybersecurity",    new[] { "Cybersecurity protects systems and networks from digital attacks!",
                                           "Stay informed about cybersecurity to protect yourself!" }},
 
-            { "identity theft",   new[] { "Monitor your accounts regularly for suspicious activity!",
-                                          "Enable 2FA to prevent identity theft!" }},
+            { "privacy",          new[] { "Limit what you share online and review app permissions!",
+                                          "Use privacy settings on all your accounts!" }},
 
-            { "cookie",           new[] { "Clear cookies regularly for better privacy!",
-                                          "Only accept cookies from trusted websites!" }},
+            { "cookie",           new[] { "Clear cookies regularly and only accept from trusted sites!",
+                                          "Cookies track your browsing behaviour online!" }},
 
-            { "https",            new[] { "Always look for HTTPS before entering personal info!",
-                                          "HTTPS means the connection is encrypted!" }},
+            { "https",            new[] { "Always look for HTTPS before entering personal information!",
+                                          "HTTPS means the connection is encrypted and secure!" }},
 
-            { "fraud",            new[] { "Never share personal info with unverified sources!",
-                                          "Report fraud to the authorities immediately!" }},
+            { "worried",          new[] { "I understand your concern. Let me help you stay safe online!",
+                                          "It is completely normal to feel worried. Here are some tips to help!" }},
 
-            { "spam",             new[] { "Never click links inside spam emails!",
-                                          "Mark spam emails and report them!" }},
+            { "curious",          new[] { "Great that you are curious about cybersecurity!",
+                                          "Curiosity is the first step to staying safe online!" }},
 
-            { "fake website",     new[] { "Check the URL carefully for slight misspellings!",
-                                          "Always look for HTTPS before entering info!" }},
+            { "frustrated",       new[] { "I understand your frustration. Let me help you!",
+                                          "Take it one step at a time. Cybersecurity can be overwhelming!" }}
         };
 
-                  // Exit keywords
-            { "bye",              "EXIT" },
-            { "exit",             "EXIT" },
-            { "quit",             "EXIT" },
-            { "goodbye",          "EXIT" }
-
-public string GetTopicList()
+        // Get topic list
+        public string GetTopicList()
         {
             return "Topics I can help with:\n" +
-                   "• passwords, phishing, malware\n" +
-                   "• vpn, firewall, encryption\n" +
-                   "• 2fa, backup, data breach\n" +
-                   "• scam, fraud, ransomware\n" +
-                   "• social media, privacy\n" +
-                   "• dark web, online banking\n" +
-                   "• identity theft and more!";
+                   "passwords, phishing, malware, vpn,\n" +
+                   "2fa, firewall, encryption, backup,\n" +
+                   "scam, fraud, ransomware, spyware,\n" +
+                   "social media, privacy, dark web,\n" +
+                   "online banking, identity theft and more!";
         }
 
-        public string GetResponse(string input,
-            string userName, ref string favouriteTopic)
+        // Get response
+        public string GetResponse(string input, string userName, ref string favouriteTopic)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return "I did not catch that. Could you rephrase?";
@@ -202,6 +239,7 @@ public string GetTopicList()
                    "Type 'list' to see all available topics.";
         }
 
+        // Get random response from array
         private string GetRandomResponse(string key)
         {
             if (Responses.ContainsKey(key))
