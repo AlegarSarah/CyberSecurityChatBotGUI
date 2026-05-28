@@ -19,7 +19,7 @@ namespace CybersecurityChatbotGUI
             InitializeComponent();
             responder = new ChatbotResponder();
         }
-
+        //Added sentiment detection feature
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Play voice greeting
