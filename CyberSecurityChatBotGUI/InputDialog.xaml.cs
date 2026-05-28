@@ -6,7 +6,7 @@ namespace CyberSecurityChatBotGUI
 {
     public partial class InputDialog : Window
     {
-        public string UserName { get; private set; }
+        public string UserName { get; private set; }//Added input validation for user name
 
         public InputDialog()
         {
