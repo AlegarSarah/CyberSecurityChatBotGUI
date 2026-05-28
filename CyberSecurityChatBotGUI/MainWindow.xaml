@@ -91,6 +91,7 @@
                         BorderThickness="0"
                         Cursor="Hand"
                         Click="btnSend_Click"/>
+                <!-- Added GUI design with black and blue colors-->
             </Grid>
         </Border>
     </Grid>
